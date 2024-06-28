@@ -2,32 +2,31 @@
 
 public class Maze
 {
+  /// <summary>
+  /// Определяет есть ли у клетки стенка справа
+  /// </summary>
   private bool[,] RightWalls { get; init; }
+  /// <summary>
+  /// Определяет есть ли у клетки стенка внизу
+  /// </summary>
   private bool[,] BottomWalls { get; init; }
+  
   public uint Rows => (uint)RightWalls.GetLength(0);
   public uint Columns => (uint)RightWalls.GetLength(1);
 
-  // Генерация лабиринта
+  /// <summary>
+  /// Генерирует новый лабиринт rows x columns
+  /// </summary>
   public Maze(uint rows, uint columns)
   {
-    
+    RightWalls = new bool[columns, rows];
+    BottomWalls = new bool[columns, rows];
   }
   
-  // Открытие из файла. Пример(размер матрицы, право, низ):
-  // 4 4
-  // 0 0 0 1
-  // 1 0 1 1
-  // 0 1 0 1
-  // 0 0 0 1
-  //
-  // 1 0 1 0
-  // 0 0 1 0
-  // 1 1 0 1
-  // 1 1 1 1
-  public Maze()
-  {
-    
-  }
+  public Maze(bool[,] newRightWalls, bool[,] newBottomWalls)
+  => (RightWalls, BottomWalls) = (newRightWalls, newBottomWalls);
+  
+  
   
   public bool HasRightWall(uint row, uint column) => RightWalls[row, column];
   public bool HasLeftWall(uint row, uint column) => column == 0 || RightWalls[row, column - 1];

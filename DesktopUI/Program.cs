@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace WebUI;
+namespace DesktopUI;
 
 class Program
 {
