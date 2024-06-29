@@ -19,8 +19,8 @@ public class Maze
   /// </summary>
   public Maze(uint rows, uint columns)
   {
-    RightWalls = new bool[columns, rows];
-    BottomWalls = new bool[columns, rows];
+    RightWalls = new bool[rows, columns];
+    BottomWalls = new bool[rows, columns];
   }
   
   public Maze(bool[,] newRightWalls, bool[,] newBottomWalls)

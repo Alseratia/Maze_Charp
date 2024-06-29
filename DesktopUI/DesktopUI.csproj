@@ -16,23 +16,28 @@
         <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.10"/>
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.10"/>
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\CaveLibrary\CaveLibrary.csproj" />
       <ProjectReference Include="..\MazeLibrary\MazeLibrary.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="View\MainWindow.axaml.cs">
+      <Compile Update="View\MazeWindow.axaml.cs">
         <DependentUpon>MazeWindow.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
-      <Compile Update="View\MainControl.cs">
-        <DependentUpon>MainWindow.axaml</DependentUpon>
+      <Compile Update="View\MazeControl.cs">
+        <DependentUpon>MazeWindow.axaml</DependentUpon>
       </Compile>
       <Compile Update="App.axaml.cs">
         <DependentUpon>App.axaml</DependentUpon>
         <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="View\CaveControl.cs">
+        <DependentUpon>MazeWindow.axaml</DependentUpon>
       </Compile>
     </ItemGroup>
 </Project>

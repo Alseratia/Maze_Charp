@@ -1,0 +1,74 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:DesktopUI.ViewModel"
+        xmlns:desktopUi="clr-namespace:DesktopUI"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="DesktopUI.MazeWindow"
+        x:DataType="vm:MainViewModel"
+        Title="MazeWindow"
+        Background="#404040">
+    
+    <TabControl >
+        <TabItem Header="Лабиринт">
+            <Grid ColumnDefinitions="2* 1*" ShowGridLines="True" >
+                <Border BorderBrush="White" BorderThickness="2" 
+                        Background="Gray" HorizontalAlignment="Center" 
+                        MinHeight="501" MinWidth="501"
+                        Margin="40">
+                    <desktopUi:MazeControl Maze="{Binding Maze}" MinHeight="500" MinWidth="500"/>
+                </Border>
+                <StackPanel Spacing="10" Grid.Column="1" Width="200">
+                    <TextBlock HorizontalAlignment="Center">Генерация дабиринта</TextBlock>
+                    <TextBlock Text="Rows"></TextBlock>
+                    <NumericUpDown Width="200" 
+                                   Value="{Binding MazeRows}" Increment="1"
+                                   FormatString="0"
+                                   Minimum="1" Maximum="50"/>
+                    <TextBlock Text="Columns"></TextBlock>
+                    <NumericUpDown Width="200" 
+                                   Value="{Binding MazeColumns}" Increment="1"
+                                   FormatString="0"
+                                   Minimum="1" Maximum="50"/>
+                    
+                <Button Width="200" Content="Сгенерировать лабиринт" 
+                        HorizontalContentAlignment="Center" HorizontalAlignment="Center" Command="{Binding GenerateMaze}"/>
+                <Button Width="200" Content="Загрузить лабиринт"  
+                        HorizontalContentAlignment="Center" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Пещеры">
+            <Grid ColumnDefinitions="2* 1*" ShowGridLines="True" >
+                <Border BorderBrush="White" BorderThickness="2" 
+                        Background="Gray" HorizontalAlignment="Center" 
+                        MinHeight="501" MinWidth="501"
+                        Margin="40">
+                    <desktopUi:CaveControl Cave="{Binding Cave}" MinHeight="500" MinWidth="500"/>
+                </Border>
+                <StackPanel Spacing="10" Grid.Column="1" Width="200">
+                    <TextBlock HorizontalAlignment="Center">Генерация пещеры</TextBlock>
+                    <TextBlock Text="Rows"></TextBlock>
+                    <NumericUpDown Watermark="Rows"
+                                    Width="200" 
+                                   Value="{Binding CaveRows}" Increment="1"
+                                   FormatString="0"
+                                   Minimum="1" Maximum="50"/>
+                    <TextBlock Text="Columns"></TextBlock>
+                    <NumericUpDown
+                        Watermark="Columns"
+                                   Width="200" 
+                                   Value="{Binding CaveColumns}" Increment="1"
+                                   FormatString="0"
+                                   Minimum="1" Maximum="50"/>
+                    
+                    <Button Width="200" Content="Сгенерировать пещеру" 
+                            HorizontalContentAlignment="Center" HorizontalAlignment="Center"
+                            Command="{Binding GenerateCave}"/>
+                </StackPanel>
+            </Grid>
+
+        </TabItem>
+    </TabControl>
+</Window>

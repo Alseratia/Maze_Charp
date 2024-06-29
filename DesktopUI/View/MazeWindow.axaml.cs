@@ -3,13 +3,14 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media;
 using MazeLibrary;
 
 namespace DesktopUI;
 
-public partial class MainWindow : Window
+public partial class MazeWindow : Window
 {
-  public MainWindow()
+  public MazeWindow()
   {
     InitializeComponent();
   }

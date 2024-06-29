@@ -1,21 +1,28 @@
-﻿namespace DesktopUI;
+﻿using System;
+
+namespace DesktopUI;
 
 using MazeLibrary;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 
-public class MainControl : Control
+public class MazeControl : Control
 {
   public static readonly StyledProperty<Maze> MazeProperty =
-    AvaloniaProperty.Register<MainControl, Maze>(nameof(Maze));
+    AvaloniaProperty.Register<MazeControl, Maze>(nameof(Maze));
 
   public Maze Maze
   {
     get => GetValue(MazeProperty);
     set => SetValue(MazeProperty, value);
   }
-
+  
+  static MazeControl()
+  {
+    AffectsRender<MazeControl>(MazeProperty);
+  }
+  
   public override void Render(DrawingContext context)
   {
     base.Render(context);
